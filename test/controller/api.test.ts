@@ -1,4 +1,4 @@
-import { createApp, close } from '@midwayjs/mock';
+import { createApp, close, createHttpRequest } from '@midwayjs/mock';
 import { Framework } from '@midwayjs/koa';
 
 describe('test/controller/home.test.ts', () => {
@@ -8,10 +8,10 @@ describe('test/controller/home.test.ts', () => {
     const app = await createApp<Framework>();
 
     // make request
-    // const result = await createHttpRequest(app).get('/api/get_user').query({ uid: 123 });
+    const result = await createHttpRequest(app).get('/circles/GetCircles');
 
     // use expect by jest
-
+    expect(result.status).toBe(200);
 
     // close app
     await close(app);
